@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
 
-
 # Use PostgreSQL DB in Production as the database for Active Record
 # Also add 'rails_12factor' gem, so can assets are in 12-factor compliant way
 # Can read more here https://github.com/heroku/rails_12factor
@@ -13,12 +12,14 @@ group :production do
   gem 'rails_12factor'
 end
 
-
 # Use sqlite3 DB in Development as the database for Active Record
 group :development do
   gem 'sqlite3'
 end
 
+gem 'bootstrap-sass', '~> 3.1.1'
+
+gem 'bootswatch-rails'
 
 
 # Use SCSS for stylesheets
