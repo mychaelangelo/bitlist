@@ -17,10 +17,17 @@ group :development do
   gem 'sqlite3'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'factory_girl_rails', '~> 4.0'
+end
+
 gem 'bootstrap-sass', '~> 3.1.1'
 
 gem 'bootswatch-rails'
 
+gem 'faker'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'

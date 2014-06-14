@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   get 'welcome/about'
 
+  resources :todos, only: [:new, :create, :show]
+
 end
