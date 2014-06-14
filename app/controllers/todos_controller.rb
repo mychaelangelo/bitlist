@@ -9,7 +9,7 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.new(todo_params)
+    @todo = current_user.todos.build(todo_params)
 
     if @todo.save
       flash[:notice] = "Your Todo item saved."

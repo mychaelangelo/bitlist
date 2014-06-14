@@ -5,3 +5,31 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+# Create one user
+1.times do
+  user = User.new(
+    name: 'john',
+    email: 'john@example.com',
+    password: 'password'
+  )
+  user.skip_confirmation!
+  user.save
+end
+
+users = User.all
+
+# Create todo's for user
+
+5.times do 
+  Todo.create(
+    user: users.sample,
+    description: Faker::Lorem.sentence
+  )
+end
+todos = Todo.all
+
+puts "Seed finished"
+puts "#{User.count} users created"
+puts "#{Todo.count} posts created"
