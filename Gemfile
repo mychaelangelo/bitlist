@@ -29,6 +29,11 @@ gem 'bootswatch-rails'
 
 gem 'faker'
 
+gem 'devise'
+
+# gem to handle env variables
+gem 'figaro'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets

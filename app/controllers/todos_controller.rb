@@ -5,15 +5,18 @@ class TodosController < ApplicationController
   end
 
   def new
+    @todo = Todo.new
   end
 
   def create
     @todo = Todo.new(todo_params)
 
     if @todo.save
-      redirect_to @todo, notice: 'Your new TODO was saved'
+      flash[:notice] = "Your Todo item saved."
+      redirect_to @todo
     else
-      redirect_to new_todo_path, notice: 'You entered an empty TODO item, please try again'
+      flash[:error] = "You entered an empty ToDo item. Please try again."
+      render :new
     end
   end
 
