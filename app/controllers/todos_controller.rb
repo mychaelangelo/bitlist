@@ -1,5 +1,9 @@
 class TodosController < ApplicationController
 
+  def index
+    @todos = current_user.todos
+  end
+
   def show
     @todo = Todo.find(params[:id])
   end
@@ -13,7 +17,7 @@ class TodosController < ApplicationController
 
     if @todo.save
       flash[:notice] = "Your Todo item saved."
-      redirect_to @todo
+      redirect_to todos_path
     else
       flash[:error] = "You entered an empty ToDo item. Please try again."
       render :new

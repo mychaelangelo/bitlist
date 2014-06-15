@@ -1,0 +1,66 @@
+<br>
+
+
+<%= link_to "Click to Add New Todo", new_todo_path %>
+
+<!-- for to take new todo item -->
+<div class="form-group">
+  <label class="control-label">My Bit List</label>
+  <div class="input-group">
+    <span class="input-group-addon">Todo Item</span>
+    <input type="text" class="form-control">
+    <span class="input-group-btn">
+      <button class="btn btn-default" type="button">Add</button>
+    </span>
+  </div>
+</div>
+<!-- end of form for new todo item -->
+
+
+<!-- will want row of colors to depend on ranking of item, i.e. one due soon to be danger color class!-->
+<!-- see how tables look here http://bootswatch.com/readable/ -->
+<table class="table table-striped table-hover ">
+  
+  <!-- table heading -->
+  <thead>
+    <tr>
+      <th>Urgency</th>
+      <th>Item</th>
+      <th>Time Left</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <!-- end of table heading -->
+
+  <!-- start of the table body i.e. rows -->
+  <tbody>
+    <!-- start of the table rows -->
+    <% @todos.each do |todo| %>
+      <tr>   
+        <td>1 to 5 rank</td>
+        <td><%= todo.description %></td>
+        <td>[time left]</td>
+        <td>
+          <div class="btn-group">
+            <button type="button" class="btn btn-default">
+              Done!
+            </button>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu">
+              <li><a href="#">Amend</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Delete</a></li>
+            </ul>
+          </div>
+        </td>           
+      </tr>
+    <% end %>
+
+
+  </tbody>
+  <!-- END of table body rows  -->
+
+</table> 
+<!-- END of table -->
