@@ -9,6 +9,6 @@ Rails.application.routes.draw do
 
   get 'welcome/about'
 
-  resources :todos, only: [:new, :create, :show, :index]
+  resources :todos, only: [:new, :create, :show, :index, :destroy]
 
 end

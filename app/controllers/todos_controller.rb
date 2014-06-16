@@ -24,6 +24,20 @@ class TodosController < ApplicationController
     end
   end
 
+  # Will delete todo item in the user's bitlist
+  def destroy
+    @todo = current_user.todos.find(params[:id])
+
+    if @todo.destroy
+      flash[:notice] = "Your todo was item deleted!"
+      redirect_to todos_path
+    else
+      flash[:error] = "Could not delete item. Please try again."
+      render :index
+    end
+  end
+
+
   private
 
   def todo_params

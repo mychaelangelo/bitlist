@@ -17,7 +17,13 @@
         <% if current_user %>          
           <ul class="nav nav-pills">
             
-            <li class="active"><a href="#">To Dos <span class="badge"><%= current_user.todos.count%></span></a></li>
+            <li>
+              <%= link_to todos_path do %>
+                My Todos
+                <span class="badge"><%= current_user.todos.count %></a>
+              <% end %>
+            </li>
+
             <li><a href="#">My Profile <span class="badge"></span></a></li>
             <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
           </ul>
