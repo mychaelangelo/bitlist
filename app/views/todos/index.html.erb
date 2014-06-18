@@ -1,20 +1,20 @@
 <br>
 
+<!-- Enter todo item - form -->
 
-<%= link_to "Click to Add New Todo", new_todo_path %>
+  <%= form_for Todo.new, :url => { :action => "create" } do |f| %>
+    
+    <div class="form-group">
+      <div class="input-group">
 
-<!-- for to take new todo item -->
-<div class="form-group">
-  <label class="control-label">My Bit List</label>
-  <div class="input-group">
-    <span class="input-group-addon">Todo Item</span>
-    <input type="text" class="form-control">
-    <span class="input-group-btn">
-      <button class="btn btn-default" type="button">Add</button>
-    </span>
-  </div>
-</div>
-<!-- end of form for new todo item -->
+        <%= f.text_field :description, class: 'form-control', placeholder: "Enter your todo item here and press Enter..." %>
+        <span class="input-group-btn">
+          <%= f.submit "Add", class: "btn btn-default" %>
+        </span>
+      </div>
+    </div>    
+  <% end %>
+<!-- end of new form for todo -->
 
 
 <!-- will want row of colors to depend on ranking of item, i.e. one due soon to be danger color class!-->
@@ -43,7 +43,7 @@
         <td>
           <div class="btn-group">
             <button type="button" class="btn btn-default">
-              Done!
+              Done
             </button>
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
               <span class="caret"></span>
@@ -51,7 +51,7 @@
             <ul class="dropdown-menu">
               <li><a href="#">Amend</a></li>
               <li class="divider"></li>
-              <li><%= link_to "Delete", todo, :method => :delete %></li>
+              <li><%= link_to "Delete", todo, method: :delete %></li>
             </ul>
           </div>
         </td>           
