@@ -80,4 +80,8 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # http://bitlist-io.herokuapp.com 
+  config.action_mailer.default_url_options = { host: 'bitlist-io.herokuapp.com'}
+
 end
