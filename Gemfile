@@ -67,3 +67,6 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# jquery-countdown-rails
+gem 'jquery-countdown-rails'
+
