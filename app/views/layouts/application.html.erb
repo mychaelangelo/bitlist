@@ -12,20 +12,24 @@
       <li><%= link_to "Home", welcome_index_path %></li>
       <li><%= link_to "About", welcome_about_path %></li>
 
-      <!-- 'hello user' and sign-out and sign-in/up buttons-->
+      <!--  sign-out and sign-in/up buttons-->
       <div class="pull-right user-info">
         <% if current_user %>          
           <ul class="nav nav-pills">
-            
             <li>
               <%= link_to todos_path do %>
                 My Todos
                 <span class="badge"><%= current_user.todos.count %></a>
               <% end %>
             </li>
-
-            <li><a href="#">My Profile <span class="badge"></span></a></li>
-            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            <li>
+              <%= link_to edit_user_registration_path do %>
+                My Profile
+              <% end %>
+            </li>
+            <li>
+              <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+            </li>
           </ul>
 
         

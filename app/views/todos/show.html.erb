@@ -1,1 +1,23 @@
-<p><b><%= @todo.description %></b></p>
+
+<br>
+<blockquote>
+  <p class="text-info">Amend Your Todo Item Below</p>
+</blockquote>
+<br>
+<!-- Enter todo item - form -->
+<%= form_for @todo, :url => { :action => "update" } do |f| %>
+  
+  <div class="form-group">
+    <div class="input-group">
+      <%= f.text_field :description, class: 'form-control', placeholder: "Enter amended todo item here..." %>
+      <span class="input-group-btn">
+        <%= f.submit "Update", class: "btn btn-default" %>
+      </span>
+    </div> 
+  </div>    
+<% end %>
+
+<!-- Delete Post Button -->
+<%= link_to "Delete Todo", @todo, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this todo item?'} %>
+<!-- End of Delete Post Button -->
+

@@ -70,3 +70,9 @@ gem 'spring',        group: :development
 # jquery-countdown-rails
 gem 'jquery-countdown-rails'
 
+# installing twitter and facebook login ability
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
+
+

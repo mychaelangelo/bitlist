@@ -6,6 +6,10 @@ Ruby version 2.1.2p95
 
 Rails version 4.1.1
 
+Tutorials Used:
+
+Installing Omniauth with Facebook and Twitter [Tutorial](http://sourcey.com/rails-4-omniauth-using-devise-with-twitter-facebook-and-linkedin/)
+
 == README
 
 This README would normally document whatever steps are necessary to get the

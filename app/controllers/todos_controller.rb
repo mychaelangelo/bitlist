@@ -24,6 +24,21 @@ class TodosController < ApplicationController
     end
   end
 
+
+  def update
+    @todo = current_user.todos.find(params[:id])
+
+    if @todo.update_attributes(todo_params)
+      flash[:notice] = "Todo was updated."
+      redirect_to todos_path
+    else
+      flash[:error] = "There was an error saving the post. Please try again."
+      render :show
+    end
+  end
+
+
+
   # Will delete todo item in the user's bitlist
   def destroy
     @todo = current_user.todos.find(params[:id])
