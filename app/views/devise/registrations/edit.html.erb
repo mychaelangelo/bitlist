@@ -1,10 +1,13 @@
-
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<br>
+<blockquote>
+  <p class="text-info">Hello <%= current_user.name %></p>
+</blockquote>
+<p>Edit <%= resource_name.to_s.humanize %></p>
 
 <div class="row">
   <div class="col-md-8">
 
-    <h3>Change email or password</h3>
+    <h4>Change email or password</h4>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :patch }) do |f| %>
       <%= devise_error_messages! %>
       <div class="form-group">

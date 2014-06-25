@@ -67,12 +67,11 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-# jquery-countdown-rails
-gem 'jquery-countdown-rails'
 
 # installing twitter and facebook login ability
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
-
+# Whenever Gem for writing and deploying cron jobs
+gem 'whenever', :require => false

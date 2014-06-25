@@ -2,7 +2,6 @@
 
 <!-- Enter todo item - form -->
 <blockquote>
-  
   <p class="text-info">Add Your Todo Item Below</p>
 </blockquote>
 <%= form_for Todo.new, :url => { :action => "create" } do |f| %>
@@ -42,7 +41,24 @@
         <td>1 to 5 rank</td>
         <td><%= todo.description %></td>
         <td>
-          <%= todo.due %>
+          <%= distance_of_time_in_words(DateTime.now, todo.due )%>
+          <!-- timer goes here -->
+          <script language="javascript">
+            var cd1 = new countdown('cd1');
+            cd1.Div           = "clock1";
+            cd1.TargetDate        = "<%=todo.due.month%>/<%=todo.due.day%>/<%=todo.due.year%> <%=todo.due.hour%>:<%=todo.due.min%>";
+            cd1.DisplayFormat = "%%D%% days, %%H%% hrs, %%M%% mins, %%S%% secs";
+          </script>
+          
+          <div id="clockwrapper"><div id="clock1">[clock]</div></div>
+          <script language="javascript">
+            <!--
+            cd1.Setup();
+            //-->
+          </script>
+
+
+          <!-- end of timer section -->
           
         </td>
         <td>
@@ -76,5 +92,6 @@
 
 </table> 
 <!-- END of table -->
+
 
 
