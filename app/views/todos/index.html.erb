@@ -1,80 +1,108 @@
 <br>
-
-<!-- Enter todo item - form -->
 <blockquote>
   <p class="text-info">Add Your Todo Item Below</p>
 </blockquote>
+
+
 <%= form_for Todo.new, :url => { :action => "create" } do |f| %>
-  
   <div class="form-group">
     <div class="input-group">
-      <%= f.text_field :description, class: 'form-control', placeholder: "Type your todo item here and press enter..." %>
-      <span class="input-group-btn">
-        <%= f.submit "Add", class: "btn btn-default" %>
+      <span class="input-group-addon">
+        <%= f.select(:duedays, options_for_select([['Due in 1 Day', 1], ['Due in 3 Days', 3],['Due in 7 Days', 7]])) %>
       </span>
-    </div> 
-  </div>    
+      <%= f.text_field :description, :maxlength => "70", class: 'form-control', placeholder: "Enter item here..." %>
+      <span class="input-group-btn">
+        <%= f.submit "Add", class: "btn btn-default"%>
+      </span>
+    </div>
 <% end %>
-<!-- end of new form for todo -->
 
 
-<!-- will want row of colors to depend on ranking of item, i.e. one due soon to be danger color class!-->
-<!-- see how tables look here http://bootswatch.com/readable/ -->
-<table class="table table-striped table-hover ">
-  
-  <!-- table heading -->
-  <thead>
-    <tr>
-      <th>Urgency</th>
-      <th>Item</th>
-      <th>Time Left</th>
-      <th>Action</th>
-    </tr>
-  </thead>
-  <!-- end of table heading -->
+<div id="counter" class="counter">
+  <p class="text-muted">70 characters left</p>
+</div>
 
-  <!-- start of the table body i.e. rows -->
-  <tbody>
-    <!-- start of the table rows -->
-    <% @todos.each do |todo| %>
-      <tr>   
-        <td>1 to 5 rank</td>
-        <td><%= todo.description %></td>
-        <td>
-          <%= distance_of_time_in_words(DateTime.now, todo.due )%>
-          left to complete
-        </td>
-        <td>
-          <div class="btn-group">
-            <button type="button" class="btn btn-default">
-              <span class="glyphicon glyphicon-ok-circle"></span>
-              Done
-            </button>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu">
-              <li>
-                <%= link_to "Amend", todo %>
-              </li>
-              
-              <li class="divider"></li>
-              
-              <li>
-                <%= link_to "Delete", todo, data: { confirm: "Are you sure?" }, method: :delete %>
-              </li>
-            </ul>
-          </div>
-        </td>           
+<hr>
+<!-- script for char count down -->
+<script>
+  $(document).ready(function() {
+    $("#todo_description").keyup(function() {
+      var counter = $("#counter");
+      var charsRemaining = 70 - $(this).val().length;
+      counter.text(charsRemaining + " characters left");
+      counter.css('color', (charsRemaining < 35) ? 'red' : 'grey');
+    });
+  });
+</script>
+<!-- END of script for char count down -->
+
+
+
+
+
+
+<div class="panel panel-info">
+  <div class="panel-heading">
+    <p class="panel-title">My Todos</p>
+  </div>
+  <div class="panel-body">
+
+  <!-- will want row of colors to depend on ranking of item, i.e. one due soon to be danger color class!-->
+  <!-- see how tables look here http://bootswatch.com/readable/ -->
+  <table class="table table-striped table-hover ">
+    
+    <!-- table heading -->
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Time Left</th>
+        <th>Action</th>
       </tr>
-    <% end %>
+    </thead>
+    <!-- end of table heading -->
+
+    <!-- start of the table body i.e. rows -->
+    <tbody>
+      <!-- start of the table rows -->
+      <% @todos.each do |todo| %>
+        <tr>   
+          <td><%= todo.description %></td>
+          <td>
+            <%= distance_of_time_in_words(DateTime.now, todo.due )%>
+            left to complete
+          </td>
+          <td>
+            <div class="btn-group">
+              <button type="button" class="btn btn-default">
+                <span class="glyphicon glyphicon-ok-circle"></span>
+                Done
+              </button>
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu">
+                <li>
+                  <%= link_to "Amend", todo %>
+                </li>
+                
+                <li class="divider"></li>
+                
+                <li>
+                  <%= link_to "Delete", todo, data: { confirm: "Are you sure?" }, method: :delete %>
+                </li>
+              </ul>
+            </div>
+          </td>           
+        </tr>
+      <% end %>
 
 
-  </tbody>
-  <!-- END of table body rows  -->
+    </tbody>
+    <!-- END of table body rows  -->
 
-</table> 
-<!-- END of table -->
-
+  </table> 
+  <!-- END of table -->
+  </div>
+</div>  
 
 

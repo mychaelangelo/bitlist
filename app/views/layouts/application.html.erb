@@ -7,10 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body> 
+  <hr>
   <div class="container">
-    <ul class="nav nav-tabs">
-      <li><%= link_to "Home", welcome_index_path %></li>
+    <ul class="nav nav-pills">
+      <li>
+        <%= link_to welcome_index_path do %>
+          <span class="glyphicon glyphicon-home"></span>
+        <% end %>
+      </li>
+
       <li><%= link_to "About", welcome_about_path %></li>
+
 
       <!--  sign-out and sign-in/up buttons-->
       <div class="pull-right user-info">
@@ -40,8 +47,6 @@
 
       </div>
       <!-- END of sign-in/out and sign-up buttons-->
-
-
     </ul>
 
     <!-- Flash Notices Area -->
@@ -63,9 +68,9 @@
     </div>
     <% end %>
     <!-- End of Flash Notices Area -->
-
     <%= yield %>
   </div>
+
 
 </body>
 </html>

@@ -2,6 +2,8 @@ class TodosController < ApplicationController
 
   def index
     @todos = current_user.todos
+    @todo = Todo.new
+    @todo.due = Time.now
   end
 
   def show
@@ -14,6 +16,7 @@ class TodosController < ApplicationController
 
   def create
     @todo = current_user.todos.build(todo_params)
+    @todo.due = Time.now + (@todo.duedays.days)
 
     if @todo.save
       flash[:notice] = "Your Todo item saved."
@@ -56,7 +59,7 @@ class TodosController < ApplicationController
   private
 
   def todo_params
-    params.require(:todo).permit(:description)
+    params.require(:todo).permit(:description, :duedays)
   end
 
 

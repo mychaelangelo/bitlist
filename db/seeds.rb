@@ -20,15 +20,8 @@ end
 
 users = User.all
 
-# Create todo's for user
 
-5.times do 
-  Todo.create(
-    user: users.sample,
-    description: Faker::Lorem.sentence
-  )
-end
-todos = Todo.all
+
 
 puts "Seed finished"
 puts "#{User.count} users created"
