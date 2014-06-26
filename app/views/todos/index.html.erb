@@ -42,24 +42,7 @@
         <td><%= todo.description %></td>
         <td>
           <%= distance_of_time_in_words(DateTime.now, todo.due )%>
-          <!-- timer goes here -->
-          <script language="javascript">
-            var cd1 = new countdown('cd1');
-            cd1.Div           = "clock1";
-            cd1.TargetDate        = "<%=todo.due.month%>/<%=todo.due.day%>/<%=todo.due.year%> <%=todo.due.hour%>:<%=todo.due.min%>";
-            cd1.DisplayFormat = "%%D%% days, %%H%% hrs, %%M%% mins, %%S%% secs";
-          </script>
-          
-          <div id="clockwrapper"><div id="clock1">[clock]</div></div>
-          <script language="javascript">
-            <!--
-            cd1.Setup();
-            //-->
-          </script>
-
-
-          <!-- end of timer section -->
-          
+          left to complete
         </td>
         <td>
           <div class="btn-group">
