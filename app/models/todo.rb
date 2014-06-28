@@ -2,6 +2,7 @@ class Todo < ActiveRecord::Base
   # checks that todo is created with a description and a due days integer
   validates :description, presence: true
   validates :duedays, presence: true
+  
 
   # a Todo item must belong to one user
   belongs_to :user

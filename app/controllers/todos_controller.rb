@@ -15,17 +15,22 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = current_user.todos.build(todo_params)
-    @todo.due = Time.now + (@todo.duedays.days)
-
-    if @todo.save
-      flash[:notice] = "Your Todo item saved."
+    if current_user.todos.count >= 5
+      flash[:error] = "You have too many items. Please remove one then try again."
       redirect_to todos_path
     else
-      flash[:error] = "You entered an empty ToDo item. Please try again."
-      render :new
+      @todo = current_user.todos.build(todo_params)
+      @todo.due = Time.now + (@todo.duedays.days)
+
+      if @todo.save
+        flash[:notice] = "Your Todo item saved."
+        redirect_to todos_path
+      else
+        flash[:error] = "You entered an empty ToDo item. Please try again."
+        redirect_to todos_path
+      end
     end
-  end
+  end 
 
 
   def update
@@ -51,7 +56,24 @@ class TodosController < ApplicationController
       redirect_to todos_path
     else
       flash[:error] = "Could not delete item. Please try again."
-      render :index
+      redirect_to todos_path
+    end
+  end
+
+  # delete item and give incrememet completed items by 1
+  def done
+    @todo =current_user.todos.find(params[:id])
+
+    if @todo.destroy
+      # update completed number for user and save changes to dB
+      current_user.completed += 1
+      current_user.save
+
+      flash[:notice] = "Yay! Your item was completed!"
+      redirect_to todos_path
+    else
+      flash[:error] = "Could not clear item. Please try again."
+      redirect_to todos_path
     end
   end
 

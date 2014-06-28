@@ -12,7 +12,12 @@ Rails.application.routes.draw do
 
   get 'welcome/about'
 
-  resources :todos, only: [:new, :create, :show, :index, :destroy, :update]
+  resources :todos do
+    # route for 'done' controller method in todos for marking action as complete
+    member do
+      get 'done'
+    end
+  end
 
 
 end
