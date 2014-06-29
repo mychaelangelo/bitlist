@@ -15,7 +15,7 @@ Devise.setup do |config|
   # config.mailer = 'Devise::Mailer'
 
   # Omniauth configurations
-  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
+  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], {:client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}}}
   config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'] 
 
 
