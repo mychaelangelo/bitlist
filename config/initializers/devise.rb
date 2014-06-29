@@ -16,7 +16,7 @@ Devise.setup do |config|
 
   # Omniauth configurations
   config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET']
-  #config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'] 
+  config.omniauth :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET'] 
 
 
   # ==> ORM configuration
