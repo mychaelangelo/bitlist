@@ -5,7 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.1'
 
 # Use PostgreSQL DB in Production as the database for Active Record
-# Also add 'rails_12factor' gem, so can assets are in 12-factor compliant way
+# Also add 'rails_12factor' gem, so assets are in 12-factor compliant way
 # Can read more here https://github.com/heroku/rails_12factor
 group :production do
   gem 'pg'
