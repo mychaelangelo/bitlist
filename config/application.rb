@@ -14,10 +14,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-# adding addition assets to precompile
-config.assets.precompile += [
-    'bootstrap-social.css'
-]
+
 
 module Bitlist
   class Application < Rails::Application
