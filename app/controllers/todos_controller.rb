@@ -16,7 +16,7 @@ class TodosController < ApplicationController
 
   def create
     if current_user.todos.count >= 5
-      flash[:error] = "You have too many items. Please remove one then try again."
+      flash[:alert] = "You have too many items. Please remove one then try again."
       redirect_to todos_path
     else
       @todo = current_user.todos.build(todo_params)

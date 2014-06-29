@@ -76,4 +76,6 @@ gem 'omniauth-facebook'
 # Whenever Gem for writing and deploying cron jobs
 gem 'whenever', :require => false
 
+# Cool fonts (http://fortawesome.github.io/Font-Awesome/)
+gem "font-awesome-rails"
 
