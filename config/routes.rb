@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:update, :show]
   # The default page when user enters home page URL
-  root to: 'welcome#index'
+  root to: 'welcome#about'
 
   get 'welcome/index'
 

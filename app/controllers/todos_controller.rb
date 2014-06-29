@@ -65,8 +65,12 @@ class TodosController < ApplicationController
     @todo =current_user.todos.find(params[:id])
 
     if @todo.destroy
-      # update completed number for user and save changes to dB
-      current_user.completed += 1
+      # update completed/missed items number for user and save changes to dB
+      if @todo.expired?
+        current_user.missed += 1
+      else
+        current_user.completed += 1
+      end
       current_user.save
 
       flash[:notice] = "Yay! Your item was completed!"

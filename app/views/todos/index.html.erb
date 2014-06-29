@@ -92,12 +92,21 @@
               </button>
               <ul class="dropdown-menu">
                 <li>
-                  <%= link_to "Amend", todo %>
+                  <%= link_to todo do %>
+                    <i class="fa fa-pencil fa-fw"></i>
+                    Amend
+                  <% end %>
                 </li> 
                 <li class="divider"></li>
+                
                 <li>
-                  <%= link_to "Delete", todo, data: { confirm: "Are you sure you wish to delete this item?" }, method: :delete %>
+                  <%= link_to todo, data: { confirm: "Are you sure you wish to delete this item?" }, method: :delete do %>
+                  <i class="fa fa-trash-o fa-fw"></i>
+                  Delete
+                  <% end %> 
                 </li>
+
+
               </ul>
             </div>
           </td>           

@@ -12,13 +12,20 @@
     <div class="navboarder">
     <!-- menu -->
     <ul class="nav nav-pills">
+
       <li>
-        <%= link_to welcome_index_path do %>
-          <span class="glyphicon glyphicon-home"></span>
+        <%= link_to welcome_about_path do %>
+          <i class="fa fa-desktop"></i>
+          About
         <% end %>
       </li>
 
-      <li><%= link_to "About", welcome_about_path %></li>
+      <li>
+        <%= link_to "http://michaeltefula.com/contact/", :target => "_blank" do %>
+          <i class="fa fa-envelope-o"></i>
+          Contact Author
+        <% end %>
+      </li>
 
       <!--  sign-out and sign-in/up buttons-->
       <div class="pull-right user-info">
