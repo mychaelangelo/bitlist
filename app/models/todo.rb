@@ -10,6 +10,11 @@ class Todo < ActiveRecord::Base
   # sort Todos by due date (i.e. closest due date at top!)
   default_scope { order('due ASC') }
 
+  def expired?
+    Time.now >= self.due
+  end
+
+
   # # Called whenever a new Active Record object is instantiated (via 'new' or retrieval)
   # after_initialize :init
   # # Because initialize is called when 'new' Todo is called
@@ -22,6 +27,7 @@ class Todo < ActiveRecord::Base
   #     self.due ||= (Time.now + self.duedays.days)
   #   end
   # end
+
 
 
 

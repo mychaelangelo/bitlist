@@ -37,5 +37,9 @@ class UsersController < ApplicationController
     params.require(:user).permit(:accessible, :email)
   end
 
+  def show
+    @completed = current_user.completed
+  end
+
 
 end

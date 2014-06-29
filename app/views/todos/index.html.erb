@@ -1,6 +1,6 @@
 <br>
 <blockquote>
-  <p class="text-info">Add Your Todo Item Below</p>
+  <p class="text-info">Welcome to Bit List.</p>
 </blockquote>
 
 
@@ -74,8 +74,11 @@
 
           <!-- Item deadline -->
           <td>
-            <%= distance_of_time_in_words(DateTime.now, todo.due )%>
-            left to complete
+            <% if todo.expired? %>
+              <p class="text-danger">expired <%= distance_of_time_in_words(todo.due, DateTime.now)%> ago</p>
+            <% else %>
+              <%= distance_of_time_in_words(todo.due, DateTime.now)%> left
+            <% end %>
           </td>
 
           <!-- Item actions -->

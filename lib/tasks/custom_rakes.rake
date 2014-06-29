@@ -1,5 +1,16 @@
-desc "Delete items that are older than 7 days"
-task delete_todos: :environment do 
-  # finds all records that were ceated at a point earlier than 7 days ago i.e. items older than 7 days
-  Todo.where("created_at <= ?", 7.days.ago).destroy_all
+desc "Delete items that have expired"
+
+task delete_expired_todos: :environment do
+  # for each user, count number of expired items and increment that number
+  User.all.each do |u|
+    # for each user's todo items, if it's expired then increment 'missed' count and delete item
+    u.todos.each do |t|
+      if t.expired?
+        u.missed += 1
+        u.save
+        t.destroy
+      end
+    end
+  end
+
 end

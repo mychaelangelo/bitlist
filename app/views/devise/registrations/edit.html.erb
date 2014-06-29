@@ -1,23 +1,81 @@
 <br>
 <blockquote>
-  <p class="text-info">Hello <%= current_user.name %></p>
+  <p class="text-info">
+    Hi <%= current_user.name %>. You've completed 
+    <%= pluralize(current_user.completed,'item') %> to date.
+  </p>
+  <small>And you have missed <%=pluralize(current_user.missed,'item') %>.</cite></small>
 </blockquote>
-<p>Edit <%= resource_name.to_s.humanize %></p>
+
+
+<!-- Charting Area -->
+<div id="todos_chart" style="width:560px; height:300px;"></div>
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    new Highcharts.Chart({
+      chart: { 
+        renderTo: 'todos_chart',
+        plotBackgroundColor: null,
+        plotBorderWidth: 0,
+        plotShadow: false
+       },
+      title: { 
+        text: 'Completion<br>Ratio',
+        align: 'center',
+        verticalAlign: 'middle',
+        y: 50
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+      plotOptions: {
+        pie: {
+            dataLabels: {
+                enabled: true,
+                distance: -50,
+                style: {
+                    fontWeight: 'bold',
+                    color: 'white',
+                    textShadow: '0px 1px 2px black'
+                }
+            },
+            startAngle: -90,
+            endAngle: 90,
+            center: ['50%', '50%']
+        }
+      },
+      series: [{
+        type: 'pie',
+        name: 'ratio',
+        innerSize: '50%',
+        data: [
+          ['Completed', <%= current_user.completed %>], 
+          ['Missed', <%= current_user.missed %>]
+        ]
+      }]
+    });
+  });
+</script>
+<!-- End of Charting Area -->
 
 <div class="row">
   <div class="col-md-8">
-
-    <h4>Change email or password</h4>
+    <!--
+    <h4>Change name or password</h4>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :patch }) do |f| %>
       <%= devise_error_messages! %>
       <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, class: "form-control", placeholder: "John Doe" %>
       </div>
+
+      
       <div class="form-group">
         <%= f.label :email %>
         <%= f.email_field :email, class: 'form-control', placeholder: "Enter email" %>
       </div>
+      
+
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div class="form-group">
           <p>Waiting confirmation for:</p>
@@ -37,10 +95,13 @@
         <%= f.password_field :current_password, class: 'form-control', placeholder: "Enter password" %>
         <i>(we need your current password to confirm your changes)</i>
       </div>
+      
+      
       <div class="form-group">
         <%= f.submit "Update", class: 'btn btn-success' %>
       </div>
-    <% end %>    
+    <% end %>  
+    -->  
 
     <h3>Cancel my account</h3>
     <div class="form-group">

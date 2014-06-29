@@ -76,3 +76,4 @@ gem 'omniauth-facebook'
 # Whenever Gem for writing and deploying cron jobs
 gem 'whenever', :require => false
 
+

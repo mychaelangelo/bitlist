@@ -19,6 +19,6 @@
 
 # Learn more: http://github.com/javan/whenever
 
-every 1.day do
-  rake "delete_todos"
+every 1.day do 
+  rake "delete_expired_todos"
 end
