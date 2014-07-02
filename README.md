@@ -13,7 +13,7 @@ Versions: Ruby version 2.1.2p95 and Rails version 4.1.1
 * Email user when todo item deadline is less than 24 hours away 
 * Partials to separate forms from main view files (code is very clunky at the moment)
 * Separate javascript code for char countdown on textfields and place in appropriate place
-
+* Ability to amend deadline time
 ---
 ###Useful Tutorials
 ---
